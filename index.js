@@ -6,7 +6,7 @@ const roomRoute = require('./routes/room');
 const cors = require('cors');
 
 const mongoURI = "mongodb+srv://arshangamer43:123456712@cluster0.1tcodmb.mongodb.net/yourdbname"; // Include your database name
-const PORT = 6001;
+const PORT = 6002;
    
 const connect = async () => {
   try {
