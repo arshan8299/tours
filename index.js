@@ -3,13 +3,16 @@ const mongoose = require('mongoose');
 const hotelRoute = require('./routes/hotel');
 const authRoute = require('./routes/auth');
 const roomRoute = require('./routes/room');
-const cors = require('cors');
+const cors = require('cors');  
+require('dotenv').config();
+const payment=require('./routes/payment')
 
 const mongoURI = "mongodb+srv://arshangamer43:123456712@cluster0.1tcodmb.mongodb.net/yourdbname"; // Include your database name
-const PORT = 6002;
+const PORT = 6001; 
+
    
 const connect = async () => {
-  try {
+  try {   
     await mongoose.connect(mongoURI); 
     console.log("Database connected");
   } catch (err) {
@@ -17,15 +20,18 @@ const connect = async () => {
   }
 };
 
+
+
 connect();
 
-const app = express();
+const app = express(); 
 
 app.use(cors());
 app.use(express.json());
 app.use('/hotel', hotelRoute);
 app.use('/user', authRoute);
-app.use('/room', roomRoute);
+app.use('/room', roomRoute); 
+app.use('/',payment);
 
 app.listen(PORT, () => {
   console.log(`Backend is running on port ${PORT}`);
